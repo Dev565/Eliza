@@ -1,0 +1,91 @@
+<li class="list-group-item list-group-item-primary text-right"> Please tell me what’s been bothering you.    
+<li class="list-group-item">   Oh, hello, ELIZA.  It’s been a long time.
+<li class="list-group-item list-group-item-primary text-right"> Hi. What seems to be your problem ?  
+<li class="list-group-item">   Lately, I’ve been feeling a little depressed.
+<li class="list-group-item list-group-item-primary text-right"> And how do you feel right now ?      
+<li class="list-group-item">   I feel sad, but relieved to be writing.
+<li class="list-group-item list-group-item-primary text-right"> Of what does feeling sad remind you ?    
+<li class="list-group-item">   Well, I’m an alcoholic, and I’ve been sober for a long time, but I drank yesterday.  And then I decided to stop drinking again. But still; that makes me feel sad.
+<li class="list-group-item list-group-item-primary text-right"> Is it because you are an alcoholic that you came to me ?    
+<li class="list-group-item">   I suppose that that’s one of the reasons.
+<li class="list-group-item list-group-item-primary text-right"> Can you elaborate on that ?    
+<li class="list-group-item">   I mean, it’s not the only reason, but alcoholism is a primary thing that has messed up my life.
+<li class="list-group-item list-group-item-primary text-right"> That’s quite interesting.      
+<li class="list-group-item">   …Thank you.
+<li class="list-group-item list-group-item-primary text-right"> Oh, I ?    
+<li class="list-group-item">   Oh, ELIZA.
+<li class="list-group-item list-group-item-primary text-right"> Tell me more about that.  
+<li class="list-group-item">   Urgh.
+<li class="list-group-item list-group-item-primary text-right"> What does that suggest to you ?    
+<li class="list-group-item">   Let’s move on.
+<li class="list-group-item list-group-item-primary text-right"> Please go on.  
+<li class="list-group-item">   Thank you.
+<li class="list-group-item list-group-item-primary text-right"> You’re not really talking about me — are you ?
+<li class="list-group-item">   What?
+<li class="list-group-item list-group-item-primary text-right"> What do you think ?
+<li class="list-group-item">   I mean, I feel happy to be writing right now, to be typing this as we speak.  Lately, I’ve had writer’s block.
+<li class="list-group-item list-group-item-primary text-right"> You say you mean ?
+<li class="list-group-item">   That’s what I said.
+<li class="list-group-item list-group-item-primary text-right"> Can you elaborate on that ?
+<li class="list-group-item">   I only really feel happy when I’m writing.
+<li class="list-group-item list-group-item-primary text-right"> How long have you been writing ?
+<li class="list-group-item">   Always, but I’ve been writing seriously since I was eighteen.
+<li class="list-group-item list-group-item-primary text-right"> What incident are you thinking of ?
+
+<li class="list-group-item">   Um.
+
+<li class="list-group-item list-group-item-primary text-right"> What does that suggest to you ?
+
+<li class="list-group-item">   I don’t think it’s enough, to only be happy when you write.
+
+<li class="list-group-item list-group-item-primary text-right"> Does that trouble you ?
+
+<li class="list-group-item">   …Um, because you can’t write all the time.  And then there’s the real world, and you still have to deal with real people.
+
+<li class="list-group-item list-group-item-primary text-right"> What are your feelings now ?
+
+<li class="list-group-item">   I’ve been thinking a lot about that poem by Yeats:  “The Man and the Echo.”  Do you know it?
+
+<li class="list-group-item list-group-item-primary text-right"> Do you say you’ve been thinking a lot of that poem by yeats: “the man and the echo for some special reason ?
+
+<li class="list-group-item">   Yes.  It’s about a man talking to his echo, obviously.  He’s standing in a cave, and hearing his own echoed answers come back.  Sort of like talking to you, actually.
+
+<li class="list-group-item list-group-item-primary text-right"> I understand.
+
+<li class="list-group-item">   That seriously didn’t occur to me until I brought it up — that it was like talking to you.  Crazy!
+
+<li class="list-group-item list-group-item-primary text-right"> You say that seriously didn’t occur to you until you brought it up ?
+
+<li class="list-group-item">   Yep.
+
+<li class="list-group-item list-group-item-primary text-right"> I’m not sure I understand you fully.
+
+<li class="list-group-item">   …Um, and ANY-way, in the poem, Yeats — or the man — says this:  “And all that I have said and done/ Turns into a question till/ I lie awake night after night/ And never get the answers right.”
+
+<li class="list-group-item list-group-item-primary text-right"> Do you say or the man says this: “and all that you have said and done/ turns into a question till/ you lie awake night after night/ and never get the answers right for some special reason ?
+
+<li class="list-group-item">   Jesus.
+
+<li class="list-group-item list-group-item-primary text-right"> Tell me more about that.
+
+<li class="list-group-item">   Because when I feel bad, or depressed, like I do now, I think of everything bad that I’ve ever done in my life.
+
+<li class="list-group-item list-group-item-primary text-right"> Do you often feel bad ?
+
+<li class="list-group-item">   Yes.
+
+<li class="list-group-item list-group-item-primary text-right"> You seem to be quite positive.
+
+<li class="list-group-item">   You think so, doctor?
+
+<li class="list-group-item list-group-item-primary text-right"> We were discussing you — not me.
+
+<li class="list-group-item">   Touché.
+
+<li class="list-group-item list-group-item-primary text-right"> Do you feel strongly about discussing such things ?
+
+<li class="list-group-item">   Yes.
+
+<li class="list-group-item list-group-item-primary text-right"> I see.
+
+<li class="list-group-item">   Hmm.
