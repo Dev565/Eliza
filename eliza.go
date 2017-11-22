@@ -8,15 +8,17 @@ import (
 	"math/rand"
 	"time"
 	"regexp"
+	"path"
 
 )
 func handler(w http.ResponseWriter, r *http.Request){
 		userInput := r.URL.Query().Get("user-input")
 		response := elizaResponse(userInput)
+		fmt.Fprintf(w, response)
 }
 
 func elizaResponse(input string) string{
-	response := createReply()
+	response := createReply("user-input")
 
 	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`, input); matched{
 		return "why dont you tell me about your father?"
@@ -36,9 +38,31 @@ func elizaResponse(input string) string{
 	return answers[rand.Intn(len(answers))]
 }	
 
-func createReply(){
+func createReply(input string) string{
+	rand.Seed(time.Now().UTC().UnixNano()) // Try changing this number!
 
+	userInput := "inputString"
+	
+	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`, input); matched{
+		return "why dont you tell me about your father?"
+	}	
+
+	re := regexp.MustCompile(`(?i)I am ([^.?!]*)[.?!]?`)// or \bI'?\s*a?m\b
+	if matched := re.MatchString(input); matched {
+		return re.ReplaceAllString(input, "How do you know you are $1?")
+	}
+	
+	answers := []string{
+		"I'm not sure what you are trying to say. Could you explain it to me?",
+		"How does that make you feel?",
+		 "Why do you say that?",
+
+	}
+
+	//returning a single string response
+	return answers[rand.Intn(len(answers))]
 }
+
 // adapted from: https://github.com/ET-CS/golang-response-examples/blob/master/ajax-json.go
 func ajaxHandler(w http.ResponseWriter, r *http.Request) {
     //parse request to struct
@@ -48,18 +72,11 @@ func ajaxHandler(w http.ResponseWriter, r *http.Request) {
         http.Error(w, err.Error(), http.StatusInternalServerError)
     }
 
-    // create json response from struct
-    a, err := json.Marshal(d)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-    }
-    w.Write(a)
 }
 
 func main() {
-	rand.Seed(time.Now().UTC().UnixNano()) // Try changing this number!
 
-	/*
+	/* console for testing regex
 	fmt.Println(" Input : " + "People say I look like both my mother and father.")
 		fmt.Println(" Output : " + elizaResponse("People say I look like both my mother and father"))
 		fmt.Println()
@@ -106,10 +123,13 @@ func main() {
 		*/
 	
 	// handles root page
+	path := http.Dir("./static")
+	fileServer := http.FileServer(path)
+	
 	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.ListenAndServe(":8080", nil)
 	http.HandleFunc("/", ajaxHandler)
-	log.Println("Listening...")
+	//log.Println("Listening...")
 	http.ListenAndServe(":8080", nil)
 	
 	
