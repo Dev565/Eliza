@@ -30,7 +30,7 @@
 	<div class="container">
 		<form>
 			<div class="form-group">
-				<input type="text" class="form-control" id="userInput" placeholder="Talk to eliza..."></input>
+				<input type="text" class="form-control" id="userInput" placeholder="Talk to eliza..." onkeypress="return enterEvent(event)"/>
 			</div>
 		</form>
 	</div>
@@ -41,5 +41,14 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script>
+		function enterEvent(e) { <!-- adapted from: https://stackoverflow.com/questions/905222/enter-key-press-event-in-javascript
+			if (e.keyCode == 13) {
+				var tb = document.getElementById("userInput");
+				eval(tb.value);
+				return false;
+		}
+		console.log("userInput");
+}
   </body>
 </html>

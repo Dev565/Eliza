@@ -2,7 +2,7 @@ package main
 
 import (
 	//"html/template"//add html/template package 
-	//"net/http"
+	"net/http"
 	//"log"
 	"fmt"
 	"math/rand"
@@ -10,7 +10,7 @@ import (
 	"regexp"
 
 )
-func handler(w htt.ResponseWriter, r *http.Request){
+func handler(w http.ResponseWriter, r *http.Request){
 		userInput := r.URL.Query().Get("user-input")
 		response := elizaResponse(userInput)
 }
@@ -37,12 +37,29 @@ func elizaResponse(input string) string{
 }	
 
 func createReply(){
-	
+
+}
+// adapted from: https://github.com/ET-CS/golang-response-examples/blob/master/ajax-json.go
+func ajaxHandler(w http.ResponseWriter, r *http.Request) {
+    //parse request to struct
+    var d Data
+    err := json.NewDecoder(r.Body).Decode(&d)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+
+    // create json response from struct
+    a, err := json.Marshal(d)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+    w.Write(a)
 }
 
 func main() {
 	rand.Seed(time.Now().UTC().UnixNano()) // Try changing this number!
 
+	/*
 	fmt.Println(" Input : " + "People say I look like both my mother and father.")
 		fmt.Println(" Output : " + elizaResponse("People say I look like both my mother and father"))
 		fmt.Println()
@@ -86,14 +103,14 @@ func main() {
 		fmt.Println(" Input :" + "I am supposed to just take what you’re saying at face value?")
 		fmt.Println(" Output :" + elizaResponse("I am supposed to just take what you’re saying at face value? "))
 		fmt.Println()
-
+		*/
 	
 	// handles root page
-	/*http.Handle("/", http.FileServer(http.Dir("./static")))
+	http.Handle("/", http.FileServer(http.Dir("./static")))
 	http.ListenAndServe(":8080", nil)
-	
+	http.HandleFunc("/", ajaxHandler)
 	log.Println("Listening...")
 	http.ListenAndServe(":8080", nil)
-	*/
+	
 	
 }
