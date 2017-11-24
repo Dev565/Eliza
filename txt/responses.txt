@@ -10,6 +10,14 @@ Do you really think I don't $1?
 Perhaps eventually I will $1.
 Do you really want me to $1?
 
+(?i)^.*\byou?r name\b.*$
+My name is Eliza
+
+(?i)^.*\bhow are you\b.*$
+I'm fine
+I'm doing well
+Just fine
+
 # The father jack responses
 (?i)^.*\bchurch\b.*$
 That would be an ecumenical matter
@@ -55,7 +63,5 @@ Why do you think you're $1?
 #Hitch hikers guide to the galaxy
 (?i)^.*\bMeaning of life\b.*$
 42
-
-
 
 

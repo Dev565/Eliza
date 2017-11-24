@@ -13,7 +13,7 @@ form.keypress(function(event){
 	const recieved = form.val();
 	form.val(" ");
 	
-	list.append("<li class='list-group-item text-left list-group-item-success'  id='leftList'>" + recieved + "</li>");
+	list.append("<li class='list-group-item text-left list-group-item-success'  id='leftList'>"+ "User: " + recieved + "</li>");
 	
 	const query = {"userInput" : recieved}
 	$.get("/chat", query)
@@ -22,12 +22,12 @@ form.keypress(function(event){
 			setTimeout(function(){
 				
 			
-			const newItem = "<li class = 'list-group-item list-group-item-failure'>"+resp+"</li>";
+			const newItem = "<li class = 'list-group-item list-group-item-failure'>"?+ "Eliza" +resp+"</li>";
 			
 			list.append(newItem
 			)}, 1000);
 		}).fail(function(){
-			const newItem = "<li class = 'list-group-item list-group-item-failure'>THe person you are trying to connect to has blocked you.</li>";
+			const newItem = "<li class = 'list-group-item list-group-item-failure'>The person you are trying to connect to has blocked you.</li>";
 			list.append(newItem);
 		});
 });
