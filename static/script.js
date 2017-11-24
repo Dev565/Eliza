@@ -22,7 +22,7 @@ form.keypress(function(event){
 			setTimeout(function(){
 				
 			
-			const newItem = "<li class = 'list-group-item list-group-item-failure'>"?+ "Eliza" +resp+"</li>";
+			const newItem = "<li class = 'list-group-item list-group-item-failure'>"+ "Eliza: " +resp+"</li>";
 			
 			list.append(newItem
 			)}, 1000);

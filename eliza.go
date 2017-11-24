@@ -69,7 +69,7 @@ func ElizaFromFiles(responsePath string, substitutionPath string) Eliza {
 	
 	return eliza
 }
-
+//
 func (me *Eliza) RespondTo(input string) string{
 
 	for _, response := range me.responses {
@@ -94,7 +94,7 @@ func (me *Eliza) RespondTo(input string) string{
 	return output
 		}
 	}
-	return "I'm woldn't know too much about that"
+	return "I'm woldn't know too much about"
 }
 
 
