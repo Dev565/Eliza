@@ -1,2 +1,61 @@
 # Responses
+# adapted from: https://github.com/data-representation/eliza/blob/master/data/responses.txt
+(?i)^\s*I need ([^.!?]*)[.!?]*\s*$
+Why do you need $1?
+Would it really help you to get $1?
+Are you sure you need $1?
+
+(?i)^\s*Why don'?t you([^.!?]*)[.!?\s]*$
+Do you really think I don't $1?
+Perhaps eventually I will $1.
+Do you really want me to $1?
+
+# The father jack responses
+(?i)^.*\bchurch\b.*$
+That would be an ecumenical matter
+
+(?i)^.*\bbible\b.*$
+That would be an ecumenical matter
+
+(?i)^.*\bjesus\b.*$
+That would be an ecumenical matter
+
+(?i)^.*\bGod\b.*$
+That would be an ecumenical matter
+
+(?i)^.*\bhi\b.*$
+How are you today?
+Hello there.
+Sup.
+
+(?i)^.*\bhello\b.*$
+How are you today?
+Hello there.
+Sup.
+
+(?i)^.*\bfriends ([^.!?]*)[.!?\s]*$
+Why are your friends $1?
+
+#The sidious response
+(?i)^.*\bStar wars\b.*$
+Did you ever hear the Tragedy of Darth Plagueis the Wise? I thought not it's not a story the Jedi would tell you. It's a Sith legend. Darth Plagueis was a Dark Lord of the Sith so powerful and so wise, he could use the Force to influence the midi-chlorians to create...life. He had such a knowledge of the Dark Side, he could even keep the ones he cared about...from dying.The dark side of the Force is a pathway to many abilities some consider to be unnatural.He became so powerful, the only thing he was afraid of was losing his power...which, eventually of course, he did. Unfortunately, he taught his apprentice everything he knew. Then his apprentice killed him in his sleep. Ironic. He could save others from death...but not himself.
+
+(?i)^.*\bSand\b.*$
+I don't like sand. It's coarse and rough and irritating and it gets everywhere.
+
+(?i)^\s*(?:I am|I'm) ([^.!?]*)[.!?\s]*$
+Did you come to me because you are $1?
+How long have you been $1?
+How do you feel about being $1?
+How does being $1 make you feel?
+Do you enjoy being $1?
+Why do you say that you're $1?
+Why do you think you're $1?
+
+#Hitch hikers guide to the galaxy
+(?i)^.*\bMeaning of life\b.*$
+42
+
+
+
 
