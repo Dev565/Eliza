@@ -90,9 +90,9 @@ func (me *Eliza) RespondTo(input string) string{
 						}
 					}
 				}
-		output = strings.Replace(output, "$"+strconv.Itoa(m+1), strings.Join(tokens, " "), -1)
-	}
-	return output
+				output = strings.Replace(output, "$"+strconv.Itoa(m+1), strings.Join(tokens, " "), -1)
+			}
+			return output
 		}
 	}
 	return "I'm wouldn't know too much about"
@@ -147,11 +147,11 @@ func createReply(path string) string{
 
 func inputHandler(w http.ResponseWriter, r *http.Request) {
 	input := r.URL.Query().Get("userInput")
-print("input isin inputHandler "+input)
+	print("input isin inputHandler "+input)
 	eliza := ElizaFromFiles("txt/responses.txt", "txt/substitutions.txt")
 
 	fmt.Println("Eliza: Hello, how are you today?")
-output := eliza.RespondTo(input)
+	output := eliza.RespondTo(input)
 	fmt.Fprintf(w, output)
 }
 
@@ -164,6 +164,7 @@ func main() {
 	http.Handle("/", fs)
 	http.HandleFunc("/chat", inputHandler)
 
+	//listen on 127.0.0.1:8080
 	http.ListenAndServe(":8080", nil)
 
 	// code for console testing before using file serving

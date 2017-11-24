@@ -22,10 +22,9 @@ form.keypress(function(event){
 			setTimeout(function(){
 				
 			
-			const newItem = "<li class = 'list-group-item list-group-item-failure'>"+ "Eliza: " +resp+"</li>";
+				const newItem = "<li class = 'list-group-item list-group-item-failure'>"+ "Eliza: " +resp+"</li>";
 			
-			list.append(newItem
-			)}, 1000);
+				list.append(newItem)}, 1000);
 		}).fail(function(){
 			const newItem = "<li class = 'list-group-item list-group-item-failure'>The person you are trying to connect to has blocked you.</li>";
 			list.append(newItem);

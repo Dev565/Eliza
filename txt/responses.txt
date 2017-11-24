@@ -53,9 +53,9 @@ My name is Eliza
 Did you hear about the two guys that stole a calender? They both got 6 months
 
 (?i)^.*\bhow are you\b.*$
-I'm fine
-I'm doing well
-Just fine
+I'm fine. How're you?
+I'm doing well. How are you?
+Just fine. Why do you ask?
 
 # The father jack responses
 (?i)^.*\bchurch\b.*$
@@ -72,8 +72,8 @@ That would be an ecumenical matter
 
 (?i)^.*\bhi\b.*$
 How are you today?
-Hello there.
-Sup.
+Hello there. How are you?
+Sup. What's the craic?
 
 (?i)^.*\bhello\b.*$
 How are you today?
@@ -102,5 +102,6 @@ Why do you think you're $1?
 #Hitch hikers guide to the galaxy response
 (?i)^.*\bMeaning of life\b.*$
 42
+
 
 
