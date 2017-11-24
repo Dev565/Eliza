@@ -117,11 +117,11 @@ func (me *Eliza) RespondTo(input string) string{
 	return answers[rand.Intn(len(answers))]
 	
 	}	
-	
+
+//  Atempt of making a response writer
 func createReply(path string) string{
 	rand.Seed(time.Now().UTC().UnixNano()) // Try changing this number!
 
-	//userInput := inputString
 	
 	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`, input); matched{
 		return "why dont you tell me about your father?"
@@ -165,7 +165,7 @@ func main() {
 
 	http.ListenAndServe(":8080", nil)
 
-	// Create a new instance of Eliza.
+	// code for console testing before using file serving
 //	eliza := ElizaFromFiles("txt/responses.txt", "txt/substitutions.txt")
 
 	// Print a greeting to the user.
@@ -181,15 +181,3 @@ func main() {
 		}
 	}*/
 }
-/*
-// adapted from: https://github.com/ET-CS/golang-response-examples/blob/master/ajax-json.go
-func ajaxHandler(w http.ResponseWriter, r *http.Request) {
-    //parse request to struct
-    var d Data
-    err := json.NewDecoder(r.Body).Decode(&d)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-    }
-
-}
-*/

@@ -31,3 +31,17 @@ form.keypress(function(event){
 			list.append(newItem);
 		});
 });
+
+/*
+// atempt of using ajax
+// adapted from: https://github.com/ET-CS/golang-response-examples/blob/master/ajax-json.go
+func ajaxHandler(w http.ResponseWriter, r *http.Request) {
+    //parse request to struct
+    var d Data
+    err := json.NewDecoder(r.Body).Decode(&d)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+    }
+
+}
+*/
