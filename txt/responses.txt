@@ -9,10 +9,35 @@ Are you sure you need $1?
 Do you enjoy having $1?
 What does $1 do?
 
+(?i)^.*\bare you ok?\b.*$
+I'm fine
+I'm doing well
+Just fine
+
+(?i)^.*\bfamily?\b.*$
+How is your father?
+How is your Mother?
+How is your brother?
+How is your sister?
+
 (?i)^.*\bwork\b.*$
 How long have you been doing that?
 That's very interesting
 Tell me more about it
+
+(?i)^\s*Father is ([^.!?]*)[.!?\s]*$
+What does he do for a living?
+
+(?i)^\s*Brother is ([^.!?]*)[.!?\s]*$
+Are you close with him?
+
+(?i)^\s*Sister is ([^.!?]*)[.!?\s]*$
+Are you close with her?
+
+(?i)^\s*Mother is ([^.!?]*)[.!?\s]*$
+What does she do for a living?
+
+
 
 (?i)^\s*Why don'?t you([^.!?]*)[.!?\s]*$
 Do you really think I don't $1?
@@ -21,6 +46,8 @@ Do you really want me to $1?
 
 (?i)^.*\byou?r name\b.*$
 My name is Eliza
+
+
 
 (?i)^.*\bjoke\b.*$
 Did you hear about the two guys that stole a calender? They both got 6 months
