@@ -1,81 +1,104 @@
 package main
-
+//  adapted from: https://github.com/data-representation/eliza/blob/master/eliza.go
 import (
-	//"html/template"//add html/template package 
-	"net/http"
-	//"log"
+	"bufio"
 	"fmt"
+	"log"
 	"math/rand"
-	"time"
+	"os"
 	"regexp"
-	//"path"
-
+	"strconv"
+	"strings"
+	"time"
+	"net/http"
 )
 
-func main() {
-
-	/* console for testing regex
-	fmt.Println(" Input : " + "People say I look like both my mother and father.")
-		fmt.Println(" Output : " + elizaResponse("People say I look like both my mother and father"))
-		fmt.Println()
-
-
-		
-		fmt.Println(" Input : " + "Father was a teacher.")
-		fmt.Println(" Output : " + elizaResponse("Father was a teacher"))
-
-		
-		fmt.Println(" Input : " + "I was my father’s favourite.")
-		fmt.Println(" Output : " + elizaResponse("I was my father’s favourite."))
-		fmt.Println()
-
-
-		fmt.Println(" Input : " + "Im looking forward to the weekend.")
-		fmt.Println(" Output : " + elizaResponse("I’m looking forward to the weekend."))
-		fmt.Println()
-
-
-		fmt.Println(" Input : " + "My grandfather was French!")
-		fmt.Println(" Output : " + elizaResponse("My grandfather was French!"))
-		fmt.Println()
-
-		
-		fmt.Println(" Input :" + "I am happy")
-		fmt.Println(" Output :" + elizaResponse("I am happy"))
-		fmt.Println()
-
-
-		fmt.Println(" Input :" + "I am not happy with your responses. ")
-		fmt.Println(" Output :" + elizaResponse("I am not happy with your responses. "))
-		fmt.Println()
-
-				
-		fmt.Println(" Input :" + " I am not sure that you understand the effect that your questions are having on me.")
-		fmt.Println(" Output :" + elizaResponse("I am not sure that you understand the effect that your questions are having on me."))
-		fmt.Println()
-
-		
-		fmt.Println(" Input :" + "I am supposed to just take what you’re saying at face value?")
-		fmt.Println(" Output :" + elizaResponse("I am supposed to just take what you’re saying at face value? "))
-		fmt.Println()
-		*/
-	
-	// handles root page
-        http.Handle("/", http.FileServer(http.Dir("./static")))
-        http.ListenAndServe(":8080", nil)
-
-	
+type Replacer struct {
+	original *regexp.Regexp
+	replacements []string
 }
+
+/*
 
 func handler(w http.ResponseWriter, r *http.Request){
 		userInput := r.URL.Query().Get("user-input")
 		response := elizaResponse(userInput)
 		fmt.Fprintf(w, response)
 }
+*/
 
-func elizaResponse(input string) string{
-	response := createReply("user-input")
+func ReadFromFile(path string) []Replacer{
+		file, err := os.Open(path)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer file.Close()
+		
+		var replacers []Replacer
+		
+		for scanner, readoriginal := bufio.NewScanner(file), false; scanner.Scan();{
+			
+			switch line := scanner.Text();{
 
+				case strings.HasPrefix(line, "#"):
+				
+				case len(line) == 0:
+					readoriginal = false
+					
+				case readoriginal == false:
+					replacers = append(replacers, Replacer{original: regexp.MustCompile(line)})
+					readoriginal = true
+				
+				default:
+					replacers[len(replacers)-1].replacements = append(replacers[len(replacers)-1].replacements, line)
+			}
+		}
+	return replacers 
+}
+
+type Eliza struct {
+		responses		[]Replacer
+		substitutions 	[]Replacer
+}
+
+func ElizaFromFiles(responsePath string, substitutionPath string) Eliza {
+	eliza := Eliza{}
+	
+	eliza.responses = ReadFromFile(responsePath)
+	eliza.substitutions = ReadFromFile(substitutionPath)
+	
+	return eliza
+}
+//
+func (me *Eliza) RespondTo(input string) string{
+
+	for _, response := range me.responses {
+		if matches := response.original.FindStringSubmatch(input); matches != nil {
+	
+			output := response.replacements[rand.Intn(len(response.replacements))]
+		
+			bounderies := regexp.MustCompile(`[\s,.?!]+`)
+		
+			for m, match := range matches[1:] {
+				tokens := bounderies.Split(match, -1)
+				for t, token := range tokens {
+					for _, substitution := range me.substitutions {
+						if substitution.original.MatchString(token) {
+							tokens[t] = substitution.replacements[rand.Intn(len(substitution.replacements))]
+							break
+						}
+					}
+				}
+		output = strings.Replace(output, "$"+strconv.Itoa(m+1), strings.Join(tokens, " "), -1)
+	}
+	return output
+		}
+	}
+	return "I'm woldn't know too much about that"
+}
+
+
+	/*
 	if matched, _ := regexp.MatchString(`(?i).*\bfather\b.*`, input); matched{
 		return "why dont you tell me about your father?"
 	}	
@@ -92,9 +115,10 @@ func elizaResponse(input string) string{
 	}
 	
 	return answers[rand.Intn(len(answers))]
-}	
-
-func createReply(input string) string{
+	
+	}	
+	
+func createReply(path string) string{
 	rand.Seed(time.Now().UTC().UnixNano()) // Try changing this number!
 
 	//userInput := inputString
@@ -117,6 +141,45 @@ func createReply(input string) string{
 
 	//returning a single string response
 	return answers[rand.Intn(len(answers))]
+}
+*/
+
+func inputHandler(w http.ResponseWriter, r *http.Request) {
+	input := r.URL.Query().Get("userInput")
+print("input isin inputHandler "+input)
+	eliza := ElizaFromFiles("txt/responses.txt", "txt/substitutions.txt")
+
+	fmt.Println("Eliza: Hello, how are you today?")
+output := eliza.RespondTo(input)
+	fmt.Fprintf(w, output)
+}
+
+//  adapted from: https://github.com/data-representation/eliza/blob/master/eliza.go
+func main() {
+	// Seed the rand package with the current time.
+	rand.Seed(time.Now().UnixNano())
+
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fs)
+	http.HandleFunc("/chat", inputHandler)
+
+	http.ListenAndServe(":8080", nil)
+
+	// Create a new instance of Eliza.
+//	eliza := ElizaFromFiles("txt/responses.txt", "txt/substitutions.txt")
+
+	// Print a greeting to the user.
+//	fmt.Println("Eliza: Hello, how are you today?")
+	// Read from the user.
+/*	scanner := bufio.NewScanner(os.Stdin)
+	for fmt.Print("You: "); scanner.Scan(); fmt.Print("You: ") {
+		// Print Eliza's response.
+		fmt.Println("Eliza:", eliza.RespondTo(scanner.Text()))
+		// If the user typed "quit" then exit. Eliza has a chance to respond first.
+		if quit, _ := regexp.MatchString("(?i)^quit$", scanner.Text()); quit {
+			break
+		}
+	}*/
 }
 /*
 // adapted from: https://github.com/ET-CS/golang-response-examples/blob/master/ajax-json.go
