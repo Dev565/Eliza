@@ -95,7 +95,7 @@ func (me *Eliza) RespondTo(input string) string{
 	return output
 		}
 	}
-	return "I'm woldn't know too much about"
+	return "I'm wouldn't know too much about"
 }
 
 
